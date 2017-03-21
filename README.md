@@ -104,7 +104,7 @@ Description=arp-proxy for overlapped networks
 
 [Service]
 Type=simple
-ExecStart=/opt/arp-proxy/arp-proxy.py eth0 00:05:00:05:00:05
+ExecStart=/opt/arp-proxy/arp-proxy.py enp4s0 00:05:00:05:00:05
 StandardOutput=null
 Restart=always
 
