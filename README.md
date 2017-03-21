@@ -29,6 +29,7 @@ arp-proxy-scapy for overlapped networks
 Самое простое решение №2 включить arp-proxy на интерфейсе роутера с сетью 10.0.0.0/8, но у разных вендоров arp-proxy может работать по разному. Например у Juniper arp-proxy имеет два режима работы: Restricted и Unrestricted.
 
 * Restricted—The switch responds to ARP requests in which the physical networks of the source and target are different and does not respond if the source and target IP addresses are on the same subnet. In this mode, hosts on the same subnet communicate without proxy ARP. We recommend that you use this mode on the switch.
+
 * Unrestricted—The switch responds to all ARP requests for which it has a route to the destination. This is the default mode (because it is the default mode in Juniper Networks Junos operating system (Junos OS) configurations other than those on the switch). We recommend using restricted mode on the switch.
 
 У Cisco arp-proxy включена по умолчанию и ее режим работы аналогичен Restricted режиму у Juniper.
