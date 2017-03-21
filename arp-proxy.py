@@ -58,10 +58,23 @@ def cli_args():
 
 
 def get_iface_mac_address():
-    global gw_mac
+    global iface_mac
     mac = get_if_hwaddr(iface)
     if mac != "00:00:00:00:00:00":
-        gw_mac = mac
+        iface_mac = mac
+
+
+# global variables
+iface = ''
+iface_mac = ''
+gw_mac = ''
+
+
+# table: net | subnet
+nets_overlap = (
+    (ip_network('10.0.0.0/8'), ip_network('10.0.1.0/24')),
+    (ip_network('10.0.0.0/8'), ip_network('10.0.2.0/24'))
+)
 
 
 def arp_proxy(pkt):
@@ -87,23 +100,11 @@ def arp_proxy(pkt):
             print('-----------------------------------\n')
 
 
-# global variables
-iface = 'enp4s0'
-iface_mac = ''
-gw_mac = '78:fe:3d:a0:57:f0'
-
-# table: net | subnet
-nets_overlap = (
-    (ip_network('10.0.0.0/8'), ip_network('10.0.1.0/24')),
-    (ip_network('10.0.0.0/8'), ip_network('10.0.2.0/24'))
-)
-
-
 def main():
     cli_args()
     get_iface_mac_address()
     logs()
-    # sniff all arp requests with opcode = 1 (who-is)
+    # sniff all arp requests with opcode = 1 (who-has)
     sniff(iface=iface, prn=arp_proxy, filter='arp[6:2]=1', store=0)
 
 
