@@ -64,11 +64,10 @@ def get_iface_mac_address():
         iface_mac = mac
 
 
-# global variables
+# global variables for func arp_proxy()
 iface = ''
 iface_mac = ''
 gw_mac = ''
-
 
 # table: net | subnet
 nets_overlap = (
@@ -80,10 +79,10 @@ nets_overlap = (
 def arp_proxy(pkt):
     for net in nets_overlap:
         if ip_address(pkt.psrc) in net[0] and ip_address(pkt.pdst) in net[1] and \
-                        pkt.hwsrc != gw_mac and pkt.hwsrc != iface_mac and\
+                        pkt.hwsrc != gw_mac and pkt.hwsrc != iface_mac and \
                         pkt.pdst != str(net[1].network_address) and \
                         pkt.pdst != str(net[1].broadcast_address):
-
+            # create arp reply paket
             arp_reply = Ether(src=iface_mac, dst=pkt.hwsrc) / \
                         ARP(op=2, hwsrc=gw_mac, psrc=pkt.pdst, hwdst=pkt.hwsrc, pdst=pkt.psrc)
 

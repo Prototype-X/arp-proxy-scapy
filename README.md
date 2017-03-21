@@ -127,7 +127,7 @@ sudo systemctl status arp-proxy.service
    Memory: 18.6M
       CPU: 981ms
    CGroup: /system.slice/arp-proxy.service
-           └─10294 python3 /opt/arp-proxy/arp-proxy.py
+           └─10294 python3 /opt/arp-proxy/arp-proxy.py enp4s0 00:05:00:05:00:05
 ```
 [Управляем сервисами в systemd](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)
 
