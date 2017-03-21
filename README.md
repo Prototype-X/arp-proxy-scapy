@@ -11,9 +11,13 @@ arp-proxy-scapy for overlapped networks
 
 Проблема заключается в том что хосты из большой сети 10.0.0.0/8 не смогут общаться с хостами из сетей 10.0.1.0/24 и 10.0.2.0/24, так как хосты в сети 10.0.0.0/8 считают что находятся в одном широковещательном сегменте с сетями 10.0.1.0/24 и 10.0.2.0/24 и будут отправлять широковещательные arp запросы who-is для хостов из сетей 10.0.1.0/24 и 10.0.2.0/24 на которые будет не кому ответить.
 
-Пример arp request/reply:
+Пример arp:
+
+arp request
 
 ![arp-request](https://github.com/Prototype-X/arp-proxy-scapy/blob/master/img/arp-request.png)
+
+arp reply:
 
 ![arp-reply](https://github.com/Prototype-X/arp-proxy-scapy/blob/master/img/arp-reply.png)
 
