@@ -115,7 +115,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
-Активируем и запустим наш сервис:
+Активируем и запускаем наш сервис:
 ```text
 sudo systemctl enable arp-proxy.service
 sudo systemctl start arp-proxy.service
