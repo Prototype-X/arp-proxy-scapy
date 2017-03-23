@@ -115,6 +115,8 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+Для запуска arp-proxy нужно указать имя интерфейса который будет слушать arp request и отправлять arp reply и MAC шлюза сети, который будет использоваться в arp reply 
+
 Активируем и запускаем наш сервис:
 ```text
 sudo systemctl enable arp-proxy.service
